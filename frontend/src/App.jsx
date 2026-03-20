@@ -66,7 +66,7 @@ export default function App() {
       "Generate a completely different version with a new angle and hook."
     );
 
-    const res = await fetch("http://localhost:8000/generate", {
+    const res = await fetch("https://ai-content-repurposing.onrender.com/generate", {
       method: "POST",
       body: formData
     });
