@@ -9,3 +9,4 @@ python-dotenv
 pydantic
 beautifulsoup4
 langchain-groq
+python-multipart
