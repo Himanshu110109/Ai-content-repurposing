@@ -47,6 +47,13 @@ export default function App() {
       body: formData
     });
 
+    if (!res.ok) {
+      const text = await res.text();
+      console.error("Backend error:", text);
+      alert("Backend failed. Check console.");
+      setLoading(false);
+      return;
+    }
     const data = await res.json();
     setResult(data);
     setLoading(false);
