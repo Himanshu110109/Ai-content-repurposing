@@ -95,12 +95,6 @@ prompt = ChatPromptTemplate.from_messages([
 
         Start with a concrete observation.
 
-        Bad:
-        "Content repurposing is important"
-
-        Good:
-        "You publish a blog once… and expect it to work forever"
-
         ----------------------------------------
 
         TWEETS:
