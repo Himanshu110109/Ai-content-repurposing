@@ -42,7 +42,7 @@ export default function App() {
     formData.append("tone", tone);
     formData.append("types", JSON.stringify(["tweets", "linkedin", "email"]));
 
-    const res = await fetch("http://localhost:8000/generate", {
+    const res = await fetch("https://ai-content-repurposing.onrender.com/generate", {
       method: "POST",
       body: formData
     });
