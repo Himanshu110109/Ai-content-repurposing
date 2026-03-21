@@ -8,6 +8,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("tweets")
   const [copied, setCopied] = useState(null);
+  const [url, setUrl] = useState("");
 
   const [result, setResult] = useState({
     tweets: [],
@@ -36,8 +37,13 @@ export default function App() {
     setLoading(true);
 
     const formData = new FormData();
-    if (file) formData.append("file", file);
-    else formData.append("content", content);
+    if (file) {
+      formData.append("file", file);
+    } else if (url) {
+      formData.append("url", url);
+    } else {
+      formData.append("content", content);
+    }
 
     formData.append("tone", tone);
     formData.append("types", JSON.stringify(["tweets", "linkedin", "email"]));
@@ -63,9 +69,13 @@ export default function App() {
     setLoading(true);
 
     const formData = new FormData();
-    if (file) formData.append("file", file);
-    else formData.append("content", content);
-
+    if (file) {
+      formData.append("file", file);
+    } else if (url) {
+      formData.append("url", url);
+    } else {
+      formData.append("content", content);
+    }
     formData.append("tone", tone);
     formData.append("types", JSON.stringify([type]));
     formData.append(
@@ -118,6 +128,14 @@ export default function App() {
             rows={5}
             value={content}
             onChange={(e) => setContent(e.target.value)}
+          />
+
+          <input
+            type="text"
+            placeholder="Or paste a URL..."
+            className="w-full p-4 rounded-xl bg-black/40 border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
           />
 
           {/* FILE */}
