@@ -4,7 +4,8 @@ from fastapi import UploadFile
 import tempfile
 async def pdfload(file:UploadFile):
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp:
-        temp.write(file.file.read())
+        content = await file.read()
+        temp.write(content)
         temp_path = temp.name
 
     loader = PyPDFLoader(temp_path)
