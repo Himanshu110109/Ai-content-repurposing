@@ -21,8 +21,6 @@ export default function App() {
 
   if (activeTab === "tweets") {
     text = result.tweets?.join("\n\n");
-  } else if (activeTab === "linkedin") {
-    text = result.linkedin;
   } else if (activeTab === "email") {
     text = `${result.email?.subject}\n\n${result.email?.body}`;
   }
@@ -39,8 +37,6 @@ export default function App() {
     const formData = new FormData();
     if (file) {
       formData.append("file", file);
-    } else if (url) {
-      formData.append("url", url);
     } else {
       formData.append("content", content);
     }
@@ -71,8 +67,6 @@ export default function App() {
     const formData = new FormData();
     if (file) {
       formData.append("file", file);
-    } else if (url) {
-      formData.append("url", url);
     } else {
       formData.append("content", content);
     }
@@ -128,14 +122,6 @@ export default function App() {
             rows={5}
             value={content}
             onChange={(e) => setContent(e.target.value)}
-          />
-
-          <input
-            type="text"
-            placeholder="Or paste a URL..."
-            className="w-full p-4 rounded-xl bg-black/40 border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
           />
 
           {/* FILE */}
