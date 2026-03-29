@@ -53,7 +53,7 @@ async def generate(
 
     chain = prompt | llm | parser
 
-    response = await chain.invoke({
+    response = await chain.ainvoke({
         "content": raw_data,
         "instructions": get_instruction(types),
         "tone":tone,
