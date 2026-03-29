@@ -12,10 +12,6 @@ from instructions import get_instruction
 
 load_dotenv()
 
-print("INIT LLM...")
-llm = init_chat_model(model="groq:llama-3.1-8b-instant")
-print("LLM INITIALIZED")
-
 app = FastAPI()
 
 app.add_middleware(
@@ -39,6 +35,9 @@ async def generate(
         variation_instruction: str = Form(""),
         types: str = Form('["tweets", "linkedin", "email"]')
 ):
+    print("INIT LLM...")
+    llm = init_chat_model(model="groq:llama-3.1-8b-instant")
+    print("LLM INITIALIZED")
     types = json.loads(types)
     if file:
         raw_data = await pdfload(file)
