@@ -13,6 +13,7 @@ from instructions import get_instruction
 load_dotenv()
 
 app = FastAPI()
+print("app created")
 
 app.add_middleware(
     CORSMiddleware,
@@ -52,7 +53,7 @@ async def generate(
 
     chain = prompt | llm | parser
 
-    response = chain.invoke({
+    response = await chain.invoke({
         "content": raw_data,
         "instructions": get_instruction(types),
         "tone":tone,
