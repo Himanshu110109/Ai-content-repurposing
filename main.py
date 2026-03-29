@@ -15,8 +15,6 @@ load_dotenv()
 app = FastAPI()
 print("app created")
 
-print("DB exists:", os.path.exists("./chroma_db"))
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
