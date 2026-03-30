@@ -124,24 +124,6 @@ export default function App() {
             onChange={(e) => setContent(e.target.value)}
           />
 
-          {/* FILE */}
-          <label className="block cursor-pointer border border-dashed border-white/30 p-4 rounded-xl text-center hover:bg-white/10 transition">
-            {file ? file.name : "Upload PDF (optional)"}
-            <input
-              type="file"
-              accept="application/pdf"
-              hidden
-              onChange={(e) => {
-                const selected = e.target.files[0];
-                if (selected && selected.type !== "application/pdf") {
-                  alert("Only PDF files allowed");
-                  return;
-                }
-                setFile(selected);
-              }}
-            />
-          </label>
-
           <div className="flex justify-between items-center">
             <select
               value={tone}
